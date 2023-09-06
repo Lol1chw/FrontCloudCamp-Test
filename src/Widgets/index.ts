@@ -1,0 +1,1 @@
+export { UserInfo } from './UserInfo/ui/UserInfo'

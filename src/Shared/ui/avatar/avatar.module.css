@@ -1,0 +1,21 @@
+.circle {
+   display: flex;
+   width: 80px;
+   height: 80px;
+   padding: 14px 13px 14px 14px;
+   justify-content: center;
+   align-items: center;
+   flex-shrink: 0;
+   border-radius: 100px;
+   background: #D5E4F7;
+   box-sizing: border-box;
+}
+
+.h1 {
+   color: #212830;
+   text-align: center;
+   font-size: 40px;
+   font-style: normal;
+   font-weight: 400;
+   margin: 0;
+}

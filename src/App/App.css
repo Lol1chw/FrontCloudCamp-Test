@@ -1,0 +1,20 @@
+@font-face {
+   font-family: 'SBSansInterface';
+   font-weight: 400;
+   font-style: optional;
+   font-display: swap;
+   src: local('SBSansInterface'), url('/src/Shared/assets/SBSansInterface-Regular.woff2') format('woff2');
+}
+
+@font-face {
+   font-family: 'SBSansInterface';
+   font-weight: 600;
+   font-style: normal;
+   font-display: swap;
+   src: local('SBSansInterface'), url('/src/Shared/assets/SBSansInterface-Semibold.woff2') format('woff2');
+}
+
+body {
+   font-family: 'SBSansInterface', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}

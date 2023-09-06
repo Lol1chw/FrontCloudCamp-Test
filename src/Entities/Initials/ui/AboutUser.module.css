@@ -1,0 +1,15 @@
+.AboutUserFrame {
+   display: inline-flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-start;
+   gap: 8px;
+}
+
+.AboutUserFrame h3 {
+   margin: 0;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 26px;
+}
