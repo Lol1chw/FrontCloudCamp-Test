@@ -14,7 +14,11 @@
    src: local('SBSansInterface'), url('/src/Shared/assets/SBSansInterface-Semibold.woff2') format('woff2');
 }
 
+html,
 body {
    font-family: 'SBSansInterface', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      height: 100%;
+      background-color: #F4F4F5;
+      box-sizing: border-box;
 }

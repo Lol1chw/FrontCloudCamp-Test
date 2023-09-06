@@ -1,3 +1,7 @@
 .layout {
-    
+   max-width: 900px;
+   border-radius: 12px 12px 0px 0px;
+   background-color: #ffffff;
+   margin: 0 auto;
+   padding: 24px 25px;
 }
