@@ -4,4 +4,5 @@
    background-color: #ffffff;
    margin: 0 auto;
    padding: 24px 25px;
+   box-sizing: border-box;
 }

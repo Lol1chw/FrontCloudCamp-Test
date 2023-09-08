@@ -18,7 +18,14 @@ html,
 body {
    font-family: 'SBSansInterface', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      height: 100%;
-      background-color: #F4F4F5;
-      box-sizing: border-box;
+   height: 100dvh;
+   background-color: #f4f4f5;
+}
+
+input {
+   border-radius: 4px;
+   padding: 12px;
+   max-width: 400px;
+   box-sizing: border-box;
+   border: 1px solid var(--black-alpha-alpha-16, rgba(0, 0, 0, 0.16));
 }
