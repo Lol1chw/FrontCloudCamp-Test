@@ -1,6 +1,5 @@
+import { ReactNode } from 'react'
 
-export function button(props: string) {
-  return (
-    <button>{props}</button>
-  )
+export function Button({ className, children, id}: { className: string; children: ReactNode, id?: string }) {
+   return <button className={className} id={id}>{children}</button>
 }
