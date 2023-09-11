@@ -10,7 +10,7 @@ export function InputMaster({ children, placeholder, helperText, disabled }: Inp
       return (
          <label className={style.label}>
             {children}
-            <Input className={style.disabled} placeholder={placeholder} disabled={disabled}>
+            <Input className="filled" placeholder={placeholder} disabled={disabled}>
                {helperText}
             </Input>
          </label>
@@ -19,7 +19,7 @@ export function InputMaster({ children, placeholder, helperText, disabled }: Inp
       return (
          <label className={style.label}>
             {children}
-            <Input className={style.disabled} placeholder={placeholder} disabled={disabled} />
+            <Input className="filled" placeholder={placeholder} disabled={disabled} />
          </label>
       )
    }

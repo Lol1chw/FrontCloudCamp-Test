@@ -1,0 +1,38 @@
+.container {
+   padding: 24px 15px 24px 15px;
+}
+
+.create {
+   composes: container;
+   padding: 20px 15px 24px 15px;
+}
+
+.layout {
+   max-width: 900px;
+   border-radius: 12px 12px 0px 0px;
+   min-height: 704px;
+   height: fit-content;
+   background-color: #ffffff;
+   margin: 0 auto;
+   padding: 24px 25px;
+   box-sizing: border-box;
+}
+
+.layoutCreate {
+   composes: layout;
+   min-height: 821px;
+   padding: 62px 110px 80px 110px;
+}
+
+.lineContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   box-sizing: border-box;
+}
+
+.steps {
+   display: flex;
+   justify-content: space-between;
+   box-sizing: border-box;
+}

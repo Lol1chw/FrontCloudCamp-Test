@@ -1,0 +1,12 @@
+.standard {
+   border-radius: 4px;
+   padding: 12px;
+   max-width: 400px;
+   box-sizing: border-box;
+   border: 1px solid var(--black-alpha-alpha-16, rgba(0, 0, 0, 0.16));
+}
+
+.filled {
+   composes: standard;
+   background: var(--black-alpha-alpha-4, rgba(0, 0, 0, 0.04));
+}

@@ -1,16 +1,17 @@
+import styles from './input.module.css'
 import type { InputProps } from './input.type'
 
-export function Input({ className, placeholder, children, ...otherProps }: InputProps) {
+export function Input({ className = 'standard', placeholder, children, ...otherProps }: InputProps) {
    const props = { ...otherProps }
 
    if (children && children !== '') {
       return (
          <>
-            <input className={className} placeholder={placeholder} {...props}></input>
+            <input className={styles[className]} placeholder={placeholder} {...props}></input>
             <p>{children}</p>
          </>
       )
    } else {
-      return <input className={className} placeholder={placeholder} {...props}></input>
+      return <input className={styles[className]} placeholder={placeholder} {...props}></input>
    }
 }

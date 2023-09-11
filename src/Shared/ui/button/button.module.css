@@ -1,0 +1,5 @@
+.primary {
+   background: var(--purple-100, #5558fa);
+   margin-top: 24px;
+}
+

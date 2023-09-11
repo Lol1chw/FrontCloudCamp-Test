@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import { InputHTMLAttributes, ReactNode } from 'react'
 
-export type InputProps = {
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
    className?: string
    placeholder: string
    disabled?: boolean

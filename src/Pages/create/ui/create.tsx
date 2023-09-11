@@ -1,6 +1,11 @@
+import { Container, Stepper } from 'Shared/ui'
 
 export function Create() {
-  return (
-    <div>Create Page</div>
-  )
+   return (
+      <Container className="create">
+         <Container className="layoutCreate">
+            <Stepper />
+         </Container>
+      </Container>
+   )
 }

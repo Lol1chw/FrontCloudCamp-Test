@@ -1,5 +1,13 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
+.steps {
+   display: flex;
+   font-size: 14px;
+   font-weight: 400;
+   color: #666;
+   margin: 12px 0px 0px 0px;
+}
+
+.active {
+   composes: steps;
+   color: #5558fa;
+   font-weight: 600;
 }

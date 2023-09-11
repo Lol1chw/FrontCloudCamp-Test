@@ -1,33 +1,13 @@
 @font-face {
-   font-family: 'SBSansInterface';
-   font-weight: 400;
-   font-style: optional;
-   font-display: swap;
-   src: local('SBSansInterface'), url('/src/Shared/assets/SBSansInterface-Regular.woff2') format('woff2');
-}
-
-@font-face {
-   font-family: 'SBSansInterface';
-   font-weight: 600;
-   font-style: normal;
-   font-display: swap;
-   src: local('SBSansInterface'), url('/src/Shared/assets/SBSansInterface-Semibold.woff2') format('woff2');
+   font-family: 'SB Sans Interface';
+   src: url(Shared/assets/fonts/SBSansInterface-Regular.woff2);
 }
 
 html,
 body {
-   font-family: 'SBSansInterface', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
    height: 100%;
    background-color: #f4f4f5;
-}
-
-input {
-   border-radius: 4px;
-   padding: 12px;
-   max-width: 400px;
-   box-sizing: border-box;
-   border: 1px solid var(--black-alpha-alpha-16, rgba(0, 0, 0, 0.16));
+   font-family: 'SB Sans Interface';
 }
 
 button {
