@@ -4,7 +4,18 @@
    max-width: 400px;
    box-sizing: border-box;
    border: 1px solid var(--black-alpha-alpha-16, rgba(0, 0, 0, 0.16));
+   outline: none;
+   transition: border-color 0.3s ease;
 }
+
+.error {
+   color: #d32f2f;
+   margin: 0px;
+}
+
+.standard:focus {
+   border-color: #007bff;
+ }
 
 .filled {
    composes: standard;

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { stepperReducer } from 'Shared/ui/stepper/model'
+import { stepperReducer } from 'Shared/ui/stepper'
 
 export const store = configureStore({
    reducer: {

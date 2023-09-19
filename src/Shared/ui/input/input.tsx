@@ -1,17 +1,17 @@
+import { forwardRef } from 'react'
 import styles from './input.module.css'
 import type { InputProps } from './input.type'
-
-export function Input({ className = 'standard', placeholder, children, ...otherProps }: InputProps) {
-   const props = { ...otherProps }
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(props, ref) {
+   const { className = 'standart', placeholder, children, ...otherProps } = props
 
    if (children && children !== '') {
       return (
          <>
-            <input className={styles[className]} placeholder={placeholder} {...props}></input>
-            <p>{children}</p>
+            <input className={styles[className]} placeholder={placeholder} {...otherProps} ref={ref}></input>
+            <p className={styles.error}>{children}</p>
          </>
       )
-   } else {
-      return <input className={styles[className]} placeholder={placeholder} {...props}></input>
+   } else if (!children) {
+      return <input className={styles[className]} placeholder={placeholder} {...otherProps} ref={ref}></input>
    }
-}
+})

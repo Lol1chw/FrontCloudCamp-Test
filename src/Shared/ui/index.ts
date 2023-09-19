@@ -6,4 +6,7 @@ export { Stepper } from './stepper/stepper'
 export { Button } from './button/button'
 export { Container } from './container/container'
 
+export { increment } from './stepper'
+export { stepperReducer } from './stepper/index'
+
 export type { InputProps } from './input/input.type'

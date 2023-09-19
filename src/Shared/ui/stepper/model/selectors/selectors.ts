@@ -1,6 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit'
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
-import { RootState } from 'App/Providers/StoreProvider/Store'
+import type { RootState } from 'App/Providers/StoreProvider/Store'
 
 export const selectStepper = (state: RootState) => state.stepper
 export const selectStepperCircle = (state: RootState) => state.stepper.circle
