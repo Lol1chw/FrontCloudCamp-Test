@@ -16,9 +16,12 @@ export const stepperSlice = createSlice({
    reducers: {
       increment: (state) => {
          state.active++
+      },
+      decrement: (state) => {
+         state.active--
       }
    }
 })
 
-export const { increment } = stepperSlice.actions
+export const { increment, decrement } = stepperSlice.actions
 export const stepperReducer = stepperSlice.reducer

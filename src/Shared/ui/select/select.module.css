@@ -2,23 +2,26 @@
    border-radius: 4px;
    padding: 12px;
    max-width: 300px;
+   min-width: 120px;
+   max-height: 44px;
    box-sizing: border-box;
    border: 1px solid var(--black-alpha-alpha-16, rgba(0, 0, 0, 0.16));
    outline: none;
    transition: border-color 0.3s ease;
 }
 
+.label {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   margin-bottom: 24px;
+}
+
+.disabled {
+   display: none;
+}
+
 .error {
    color: #d32f2f;
    margin: 0px;
-}
-
-.standard:focus {
-   border-color: #007bff;
- }
-
-.filled {
-   composes: standard;
-   max-width: 400px;
-   background: var(--black-alpha-alpha-4, rgba(0, 0, 0, 0.04));
 }

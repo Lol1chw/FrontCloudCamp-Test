@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { formReducer } from 'Features/form'
 import { stepperReducer } from 'Shared/ui/stepper'
 
 export const store = configureStore({
    reducer: {
-      stepper: stepperReducer
+      stepper: stepperReducer,
+      form: formReducer
    }
 })
 

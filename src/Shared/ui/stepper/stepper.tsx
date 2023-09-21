@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { Container } from '../index'
 import { Line } from './line/line'
-import { selectCalcWidth, selectStepperActive, selectStepperCircle } from './model/selectors/selectors'
+import { selectCalcWidth, selectStepperActive, selectStepperCircle } from './model'
 import styles from './stepper.module.css'
 import { Step } from './steps/steps'
 export function Stepper() {

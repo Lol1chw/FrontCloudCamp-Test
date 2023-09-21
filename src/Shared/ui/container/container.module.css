@@ -29,10 +29,16 @@
    flex-direction: column;
    justify-content: space-between;
    box-sizing: border-box;
+   margin-bottom: 66px;
 }
 
 .steps {
    display: flex;
    justify-content: space-between;
    box-sizing: border-box;
+}
+
+.buttonGroup {
+   display: inline-flex;
+   justify-content: space-between;
 }

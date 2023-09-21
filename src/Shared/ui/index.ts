@@ -5,8 +5,7 @@ export { Input } from './input/input'
 export { Stepper } from './stepper/stepper'
 export { Button } from './button/button'
 export { Container } from './container/container'
-
-export { increment } from './stepper'
-export { stepperReducer } from './stepper/index'
+export { Select } from './select/select'
+export { increment, decrement, stepperReducer, selectStepperActive } from './stepper'
 
 export type { InputProps } from './input/input.type'

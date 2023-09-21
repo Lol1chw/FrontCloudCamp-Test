@@ -1,2 +1,1 @@
-export { increment } from './model'
-export { stepperReducer } from './model/index'
+export { stepperReducer, selectStepperActive, increment, decrement } from './model/index'

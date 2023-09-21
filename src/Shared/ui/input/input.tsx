@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import styles from './input.module.css'
 import type { InputProps } from './input.type'
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(props, ref) {
-   const { className = 'standart', placeholder, children, ...otherProps } = props
+   const { className = 'standard', placeholder, children, ...otherProps } = props
 
    if (children && children !== '') {
       return (

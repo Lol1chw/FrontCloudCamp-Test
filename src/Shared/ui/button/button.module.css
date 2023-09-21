@@ -3,3 +3,11 @@
    margin-top: 24px;
 }
 
+.back {
+   background-color: #ffffff;
+   color: #5558fa;
+   border-radius: 4px;
+   border: 1.5px solid var(--purple-100, #5558fa);
+   margin-top: 24px;
+   outline: auto;
+}
