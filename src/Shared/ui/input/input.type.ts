@@ -5,4 +5,4 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
    placeholder?: string
    disabled?: boolean
    children?: ReactNode
-} 
+}

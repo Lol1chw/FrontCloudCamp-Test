@@ -5,13 +5,13 @@ import { defineConfig } from 'vite'
 export default defineConfig({
    plugins: [react()],
    resolve: {
-    alias: {
-      App: '/src/App',
-      Pages: '/src/Pages',
-      Widgets: '/src/Widgets',
-      Features: '/src/Features',
-      Entities: '/src/Entities',
-      Shared: '/src/Shared'
-    }
+      alias: {
+         App: '/src/App',
+         Pages: '/src/Pages',
+         Widgets: '/src/Widgets',
+         Features: '/src/Features',
+         Entities: '/src/Entities',
+         Shared: '/src/Shared'
+      }
    }
 })

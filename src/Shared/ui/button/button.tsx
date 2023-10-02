@@ -8,9 +8,14 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 }
 
 export function Button({ className, children, id, ...otherProps }: ButtonProps) {
-   const props = {...otherProps }
+   const props = { ...otherProps }
+   const classNames = className
+      .split(' ')
+      .map((name) => styles[name])
+      .join(' ')
+
    return (
-      <button className={styles[className]} id={id} {...props}>
+      <button className={classNames} id={id} {...props}>
          {children}
       </button>
    )

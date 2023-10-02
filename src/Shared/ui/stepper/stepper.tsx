@@ -5,7 +5,9 @@ import { Line } from './line/line'
 import { selectCalcWidth, selectStepperActive, selectStepperCircle } from './model'
 import styles from './stepper.module.css'
 import { Step } from './steps/steps'
+
 export function Stepper() {
+   // Переписать Stepper. Сделать состояние ширины локальным
    const circles = useSelector(selectStepperCircle)
    const active = useSelector(selectStepperActive)
    const width = useSelector(selectCalcWidth)
@@ -14,7 +16,15 @@ export function Stepper() {
    const steps: ReactNode[] = []
    for (let i = 0; i < circles; i++) {
       const uuid = self.crypto.randomUUID()
-      arr.push(<Step className={i <= active ? 'active' : 'circle'} key={uuid}></Step>)
+      let className = ''
+      if (active === i) {
+         className = 'active'
+      } else if (active > i) {
+         className = 'finished'
+      } else if (active < i) {
+         className = 'circle'
+      }
+      arr.push(<Step className={className} key={uuid}></Step>)
       steps.push(
          <p className={i <= active ? styles['active'] : styles['steps']} key={uuid}>
             {i + 1}

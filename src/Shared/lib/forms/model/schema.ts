@@ -12,13 +12,15 @@ export const Step1Schema = yup
       Nickname: yup
          .string()
          .required()
-         .matches(/^[a-zA-Z0-9 ]*$/, { message: 'Nickname can only contain letters and numbers' })
+         .matches(/^[a-zA-Z0-9 ]*$/, {
+            message: 'Nickname must contain contain letters and numbers only'
+         })
          .max(30, 'Nickname must be at most 50 characters'),
       Name: yup
          .string()
          .required()
          .matches(/^(?=.*[^ ])[a-zA-Zа-яА-Я][a-zA-Zа-яА-Я ]*$/, {
-            message: 'Name can only contain letters',
+            message: 'Name must contain letters only',
             excludeEmptyString: true
          })
          .max(50, 'Name must be at most 50 characters'),
@@ -26,7 +28,7 @@ export const Step1Schema = yup
          .string()
          .required()
          .matches(/^(?=.*[^ ])[a-zA-Zа-яА-Я][a-zA-Zа-яА-Я ]*$/, {
-            message: 'Surname can only contain letters',
+            message: 'Surname must contain letters only',
             excludeEmptyString: true
          })
          .max(50),
@@ -35,9 +37,23 @@ export const Step1Schema = yup
    .required()
 
 export const Step2Schema = yup.object().shape({
-   Advantages: yup.array().of(yup.string()).required(),
-   CheckBoxGroup: yup.number().required().oneOf([1, 2, 3]),
-   RadioGroup: yup.number().required().oneOf([1, 2, 3])
+   Advantages: yup
+      .array()
+      .of(
+         yup.object().shape({
+            advantage: yup
+               .string()
+               .required('Advantages is required')
+               .matches(/^(?=.*[^ ])[a-zA-Zа-яА-Я][a-zA-Zа-яА-Я ]*$/, {
+                  message: 'Advantage must contain letters only',
+                  excludeEmptyString: true
+               })
+         })
+      )
+      .required()
+      .min(1, 'At least 1 field must be filled in'),
+   CheckBoxGroup: yup.tuple([yup.boolean(), yup.boolean(), yup.boolean()]),
+   RadioGroup: yup.number().required('Radio group is required').oneOf([1, 2, 3])
 })
 
 export const Step3Schema = yup.object().shape({

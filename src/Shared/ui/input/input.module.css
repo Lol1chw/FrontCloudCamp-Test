@@ -15,7 +15,7 @@
 
 .standard:focus {
    border-color: #007bff;
- }
+}
 
 .filled {
    composes: standard;

@@ -1,9 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit'
-import type { RootState } from 'App/Providers/StoreProvider/Store'
 
-export const selectStepper = (state: RootState) => state.stepper
-export const selectStepperCircle = (state: RootState) => state.stepper.circle
-export const selectStepperActive = (state: RootState) => state.stepper.active
+export const selectStepper = (state: AppState) => state.stepper
+export const selectStepperCircle = (state: AppState) => state.stepper.circle
+export const selectStepperActive = (state: AppState) => state.stepper.active
 
 export const selectCalcWidth = createSelector(
    [selectStepperCircle, selectStepperActive],

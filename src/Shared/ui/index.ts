@@ -6,6 +6,7 @@ export { Stepper } from './stepper/stepper'
 export { Button } from './button/button'
 export { Container } from './container/container'
 export { Select } from './select/select'
+export { Checkbox } from './checkbox/checkbox'
+export { Radio } from './radio/radio'
 export { increment, decrement, stepperReducer, selectStepperActive } from './stepper'
-
 export type { InputProps } from './input/input.type'

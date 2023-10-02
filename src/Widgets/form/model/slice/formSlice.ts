@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { FormStateValues } from '../schema/schema'
-import { Sex } from '../schema/schema'
+import type { FormStateValues } from 'Shared/lib/index'
+import { Sex } from 'Shared/lib/index'
 
 type PushDataT = {
    fieldName: string
-   value: string | number | string[] | number[] | boolean
+   value: string
 }
 
 const initialState: FormStateValues = {
@@ -12,8 +12,8 @@ const initialState: FormStateValues = {
    Name: '',
    Surname: '',
    Sex: Sex.none,
-   Advantages: [''],
-   CheckBoxGroup: 1,
+   Advantages: [{ advantage: '' }],
+   CheckBoxGroup: [false, false, false],
    RadioGroup: 1,
    About: ''
 }

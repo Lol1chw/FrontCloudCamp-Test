@@ -8,7 +8,7 @@ export const homeSchema = yup.object({
       .required('Phone is required'),
    email: yup
       .string()
-      .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, {
+      .matches(/^[\w.]+@([\w-]+\.)+[\w-]{2,4}$/, {
          message: 'Email must match the following: tim.jennings@example.com',
          excludeEmptyString: true
       })

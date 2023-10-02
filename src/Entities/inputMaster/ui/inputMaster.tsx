@@ -7,21 +7,12 @@ export const InputMaster = forwardRef<HTMLInputElement, InputMasterProps>(functi
    { children, placeholder, helperText, disabled, ...otherProps },
    ref
 ) {
-   if (helperText) {
-      return (
-         <label className={style.label}>
-            {children}
-            <Input placeholder={placeholder} disabled={disabled} {...otherProps} ref={ref}>
-               {helperText}
-            </Input>
-         </label>
-      )
-   } else {
-      return (
-         <label className={style.label}>
-            {children}
-            <Input placeholder={placeholder} disabled={disabled} {...otherProps} ref={ref} />
-         </label>
-      )
-   }
+   return (
+      <label className={style.label}>
+         {children}
+         <Input placeholder={placeholder} disabled={disabled} {...otherProps} ref={ref}>
+            {helperText}
+         </Input>
+      </label>
+   )
 })

@@ -1,13 +1,43 @@
 .primary {
-   background: var(--purple-100, #5558fa);
+   background: #5558fa;
    margin-top: 24px;
+   width: fit-content;
 }
 
 .back {
    background-color: #ffffff;
    color: #5558fa;
    border-radius: 4px;
-   border: 1.5px solid var(--purple-100, #5558fa);
    margin-top: 24px;
-   outline: auto;
+   border: 2px solid #5558fa;
+   width: fit-content;
+}
+
+.outlined {
+   background-color: #ffffff;
+   color: #5558fa;
+   padding: 12px;
+   width: min-content;
+   font-size: 24px;
+   border-radius: 4px;
+   border: 2px solid #5558fa;
+   box-sizing: border-box;
+}
+
+.icon {
+   background-color: #ffffff;
+   color: #5558fa;
+}
+
+.icon:hover svg path {
+   fill: #5558fa;
+}
+
+.disabled {
+   filter: blur(0.5);
+}
+
+.outlined.disabled {
+   border-color: rgba(0, 0, 0, 0.04);
+   cursor: not-allowed;
 }

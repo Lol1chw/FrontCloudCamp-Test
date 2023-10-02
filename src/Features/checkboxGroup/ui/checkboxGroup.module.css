@@ -1,0 +1,19 @@
+.list {
+   list-style: none;
+   padding: 0px;
+   margin: 0px 0px 24px 0px;
+}
+
+.label {
+   margin-bottom: 8px;
+}
+
+.error {
+   color: #d32f2f;
+   margin: 0px 0px 8px 0px;
+   font-size: 12px;
+}
+
+.listItem {
+   padding-left: 2px;
+}

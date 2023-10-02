@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { formReducer } from 'Features/form'
 import { stepperReducer } from 'Shared/ui/stepper'
+import { formReducer } from 'Widgets/index'
 
 export const store = configureStore({
    reducer: {

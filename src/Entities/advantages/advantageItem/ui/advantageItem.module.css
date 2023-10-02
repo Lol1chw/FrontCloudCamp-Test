@@ -1,0 +1,8 @@
+.item {
+   margin-bottom: 8px;
+   display: flex;
+}
+
+.item input:first-child {
+   width: 100%;
+}

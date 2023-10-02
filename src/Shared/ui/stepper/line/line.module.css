@@ -12,7 +12,7 @@
 
 .line::before {
    content: '';
-   background-color: #5558FA;
+   background-color: #5558fa;
    width: var(--line-width);
    position: absolute;
    height: 8px;
