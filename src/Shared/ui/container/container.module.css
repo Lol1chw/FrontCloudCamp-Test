@@ -51,6 +51,15 @@
    margin-bottom: 8px;
 }
 
+.small {
+   min-height: 500px;
+}
+
+.aboutGroup {
+   display: flex;
+   justify-content: space-between;
+}
+
 @media (max-width: 700px) {
    .layoutCreate {
       padding: 24px 25px;

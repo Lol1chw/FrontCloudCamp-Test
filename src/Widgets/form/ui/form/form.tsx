@@ -3,15 +3,16 @@ import { AdvantagesList } from 'Features/advantagesList/index'
 import { CheckboxGroup } from 'Features/checkboxGroup/index'
 import { InputGroup } from 'Features/InputGroup/index'
 import { RadioGroup } from 'Features/radioGroup/index'
+import { TextAreaAbout } from 'Features/textareaAbout'
 import { useState } from 'react'
 import { Controller, FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from 'Shared/lib'
+import { Step3Schema, Step3Values, useAppDispatch } from 'Shared/lib'
 import type { Step1Values, Step2Values } from 'Shared/lib/index'
 import { Step1Schema, Step2Schema, Sex } from 'Shared/lib/index'
 import { Button, Container, Select } from 'Shared/ui/index'
-import { pushData } from '../../model/index'
+import { decrement, increment, pushData } from '../../model/index'
 import styles from './form.module.css'
 
 export function Form() {
@@ -30,6 +31,11 @@ export function Form() {
       resolver: yupResolver(Step2Schema)
    })
 
+   const methodsThirdStep = useForm<Step3Values>({
+      mode: 'onBlur',
+      resolver: yupResolver(Step3Schema)
+   })
+
    const FirstStepErr = methodsFirstStep.formState.errors
    const SubmitFirst = methodsFirstStep.handleSubmit
 
@@ -43,11 +49,22 @@ export function Form() {
          dispatch(pushData({ fieldName: key, value: value }))
       }
       setStep(2)
+      dispatch(increment())
    }
 
-   const onSubmitStep2 = (data: Step2Values) => {
+   const onSubmitSecond = (data: Step2Values) => {
       console.log(data)
       setStep(3)
+      dispatch(increment())
+   }
+
+   const onSubmitThird = (data: Step3Values) => {
+      console.log(data)
+   }
+
+   const onBack = () => {
+      setStep(step - 1)
+      dispatch(decrement())
    }
 
    switch (step) {
@@ -89,12 +106,12 @@ export function Form() {
       case 2:
          return (
             <FormProvider {...methods}>
-               <form className={styles.form} onSubmit={methods.handleSubmit(onSubmitStep2)}>
+               <form className={styles.form} onSubmit={methods.handleSubmit(onSubmitSecond)}>
                   <AdvantagesList />
                   <CheckboxGroup />
                   <RadioGroup />
                   <Container className="buttonGroup">
-                     <Button className="back" id="button-back" onClick={() => setStep(1)}>
+                     <Button className="back" id="button-back" onClick={onBack}>
                         Back
                      </Button>
                      <Button className="primary" id="button-next">
@@ -106,11 +123,17 @@ export function Form() {
          )
       case 3:
          return (
-            <div>
-               <Button className="back" onClick={() => setStep(2)}>
-                  back
-               </Button>
-            </div>
+            <FormProvider {...methodsThirdStep}>
+               <form className={styles.form} onSubmit={methodsThirdStep.handleSubmit(onSubmitThird)}>
+                  <TextAreaAbout>About</TextAreaAbout>
+                  <Container className="buttonGroup">
+                     <Button className="back" onClick={onBack}>
+                        Назад
+                     </Button>
+                     <Button className="primary">Отправить</Button>
+                  </Container>
+               </form>
+            </FormProvider>
          )
    }
 }

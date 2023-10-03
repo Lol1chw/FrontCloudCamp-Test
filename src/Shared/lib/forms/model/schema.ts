@@ -12,8 +12,9 @@ export const Step1Schema = yup
       Nickname: yup
          .string()
          .required()
-         .matches(/^[a-zA-Z0-9 ]*$/, {
-            message: 'Nickname must contain contain letters and numbers only'
+         .matches(/^(?=.*[^ ])[a-zA-Z0-9 ]*$/, {
+            message: 'Nickname must contain contain letters and numbers only',
+            excludeEmptyString: true
          })
          .max(30, 'Nickname must be at most 50 characters'),
       Name: yup
@@ -57,7 +58,24 @@ export const Step2Schema = yup.object().shape({
 })
 
 export const Step3Schema = yup.object().shape({
-   About: yup.string().required().max(200)
+   About: yup
+      .string()
+      .required()
+      .matches(/^(?!\s+$)/, {
+         message: 'About cannot contain only spaces',
+         excludeEmptyString: true
+      })
+      .test('noSpaces', 'About must be at most 200 characters', (value) => {
+         if (value) {
+            const text = value.replace(/\s/g, '')
+            return text.length <= 200
+         }
+         return true
+      })
+      .transform((value: string) => {
+         const transformedValue = value.replace(/\n/g, ' ').trim()
+         return transformedValue
+      })
 })
 
 export type Step1Values = yup.InferType<typeof Step1Schema>

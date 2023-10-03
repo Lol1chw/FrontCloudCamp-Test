@@ -1,0 +1,4 @@
+@import url(textAreaAbout.module.css);
+.error {
+   composes: error;
+}

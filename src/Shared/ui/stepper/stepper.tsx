@@ -1,19 +1,19 @@
 import { ReactNode } from 'react'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { Container } from '../index'
 import { Line } from './line/line'
-import { selectCalcWidth, selectStepperActive, selectStepperCircle } from './model'
 import styles from './stepper.module.css'
 import { Step } from './steps/steps'
 
-export function Stepper() {
-   // Переписать Stepper. Сделать состояние ширины локальным
-   const circles = useSelector(selectStepperCircle)
-   const active = useSelector(selectStepperActive)
-   const width = useSelector(selectCalcWidth)
+type StepperProps = {
+   active: number
+   circles?: number
+}
 
+export function Stepper({ active, circles = 2 }: StepperProps) {
+   const width = (100 / (circles - 1)) * active
    const arr: ReactNode[] = []
    const steps: ReactNode[] = []
+
    for (let i = 0; i < circles; i++) {
       const uuid = self.crypto.randomUUID()
       let className = ''

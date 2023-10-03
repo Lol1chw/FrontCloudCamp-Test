@@ -1,0 +1,27 @@
+.textarea {
+   border-radius: 4px;
+   border: 2px solid #00000029;
+   resize: vertical;
+   padding: 12px;
+   min-height: 84px;
+}
+
+.textarea::-webkit-resizer {
+   background-image: url('/src/Shared/assets/icons/resize.svg');
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+}
+
+.textarea:focus-visible {
+   outline: none;
+   border: 2px solid #5558fa;
+}
+
+textarea.invalid {
+   border-color: #d32f2f;
+}
+
+.textarea.invalid:focus-visible {
+   border-color: #d32f2f;
+}

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { stepperReducer } from 'Shared/ui/stepper'
+import { stepperReducer } from 'Widgets/form/index'
 import { formReducer } from 'Widgets/index'
 
 export const store = configureStore({
