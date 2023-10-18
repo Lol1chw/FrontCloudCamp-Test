@@ -5,7 +5,7 @@ export function AdvantageItem({ index, register, remove, fields }: AdvantageItem
    return (
       <li className={styles.item} key={fields.id}>
          <Input
-            placeholder="placeholder"
+            placeholder="Enter advantage"
             id={`field-advatages-${index + 1}`}
             {...register(`Advantages.${index}.advantage` as const)}></Input>
          <Button

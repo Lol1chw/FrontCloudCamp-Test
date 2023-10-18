@@ -1,103 +1,95 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import { AdvantagesList } from 'Features/advantagesList/index'
 import { CheckboxGroup } from 'Features/checkboxGroup/index'
+import { ControlledSelect } from 'Features/controlledSelect'
 import { InputGroup } from 'Features/InputGroup/index'
+import { Modal } from 'Features/modal'
 import { RadioGroup } from 'Features/radioGroup/index'
 import { TextAreaAbout } from 'Features/textareaAbout'
 import { useState } from 'react'
-import { Controller, FormProvider, SubmitHandler, useForm } from 'react-hook-form'
+import { FormProvider, SubmitHandler } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { CancelSvg, SuccessSvg } from 'Shared/assets/icons'
 import { Step3Schema, Step3Values, useAppDispatch } from 'Shared/lib'
 import type { Step1Values, Step2Values } from 'Shared/lib/index'
-import { Step1Schema, Step2Schema, Sex } from 'Shared/lib/index'
-import { Button, Container, Select } from 'Shared/ui/index'
-import { decrement, increment, pushData } from '../../model/index'
+import { Step1Schema, Step2Schema, FormData } from 'Shared/lib/index'
+import { useFormMethods } from 'Shared/lib/index'
+import { Button, Container } from 'Shared/ui/index'
+import { decrement, increment, pushData, reset, useFetch } from '../../model/index'
 import styles from './form.module.css'
 
 export function Form() {
-   const [step, setStep] = useState(3)
+   const [step, setStep] = useState(1)
+   const [isModalActive, setModalActive] = useState(false)
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(false)
 
-   const methodsFirstStep = useForm<Step1Values>({
-      mode: 'onBlur',
-      resolver: yupResolver(Step1Schema)
+   const methodsFirstStep = useFormMethods<Step1Values>({
+      schema: Step1Schema
    })
 
-   const methods = useForm<Step2Values>({
-      defaultValues: {
-         Advantages: [{ advantage: '' }]
-      },
-      mode: 'onBlur',
-      resolver: yupResolver(Step2Schema)
+   const methodsSecondStep = useFormMethods<Step2Values>({
+      schema: Step2Schema,
+      values: { Advantages: [{ advantage: '' }] }
    })
 
-   const methodsThirdStep = useForm<Step3Values>({
-      mode: 'onBlur',
-      resolver: yupResolver(Step3Schema)
+   const methodsThirdStep = useFormMethods<Step3Values>({
+      schema: Step3Schema
    })
-
-   const FirstStepErr = methodsFirstStep.formState.errors
-   const SubmitFirst = methodsFirstStep.handleSubmit
 
    const state = useSelector((state: AppState) => state.form)
-
    const navigate = useNavigate()
    const dispatch = useAppDispatch()
 
-   const onSubmit: SubmitHandler<Step1Values> = (data) => {
-      for (const [key, value] of Object.entries(data)) {
+   const onSubmit: SubmitHandler<FormData> = async (data) => {
+      const modifiedData: FormData = JSON.parse(JSON.stringify(data))
+      for (const [key, value] of Object.entries(modifiedData)) {
          dispatch(pushData({ fieldName: key, value: value }))
       }
-      setStep(2)
-      dispatch(increment())
-   }
 
-   const onSubmitSecond = (data: Step2Values) => {
-      console.log(data)
-      setStep(3)
-      dispatch(increment())
-   }
+      if (step < 3) {
+         dispatch(increment())
+         setStep(step + 1)
+      }
 
-   const onSubmitThird = (data: Step3Values) => {
-      console.log(data)
+      if (step === 3) {
+         const updatedState = { ...state, ...modifiedData }
+         setLoading(true)
+         useFetch({ updatedState, setLoading, setError })
+         handleModalOpen()
+      }
    }
 
    const onBack = () => {
-      setStep(step - 1)
-      dispatch(decrement())
+      if (step === 1 || isModalActive) {
+         navigate(-1)
+         dispatch(reset())
+         if (isModalActive) dispatch(decrement())
+      }
+      if (step > 1) dispatch(decrement()) && setStep(step - 1)
+   }
+
+   const handleModalOpen = () => {
+      setModalActive(true)
+   }
+
+   const handleModalClose = () => {
+      setModalActive(false)
    }
 
    switch (step) {
       case 1:
          return (
             <FormProvider {...methodsFirstStep}>
-               <form className={styles.form} onSubmit={SubmitFirst(onSubmit)}>
+               <form className={styles.form} onSubmit={methodsFirstStep.handleSubmit(onSubmit)}>
                   <InputGroup />
-                  <Controller
-                     name="Sex"
-                     control={methodsFirstStep.control}
-                     defaultValue={state.Sex}
-                     render={({ field }) => (
-                        <Select
-                           helperText={FirstStepErr.Sex?.message}
-                           label="Sex"
-                           id="field-sex"
-                           className="standard"
-                           {...field}>
-                           <option className="disabled" value={'none'}>
-                              {Sex.none}
-                           </option>
-                           <option id="field-sex-option-man">{Sex.man}</option>
-                           <option id="field-sex-option-woman">{Sex.woman}</option>
-                        </Select>
-                     )}
-                  />
+                  <ControlledSelect />
                   <Container className="buttonGroup">
-                     <Button className="back" id="button-back" onClick={() => navigate(-1)}>
-                        Назад
+                     <Button className="back" id="button-back" type="button" onClick={onBack}>
+                        Back
                      </Button>
                      <Button className="primary" id="button-next" type="submit">
-                        Далее
+                        Next
                      </Button>
                   </Container>
                </form>
@@ -105,17 +97,17 @@ export function Form() {
          )
       case 2:
          return (
-            <FormProvider {...methods}>
-               <form className={styles.form} onSubmit={methods.handleSubmit(onSubmitSecond)}>
+            <FormProvider {...methodsSecondStep}>
+               <form className={styles.form} onSubmit={methodsSecondStep.handleSubmit(onSubmit)}>
                   <AdvantagesList />
                   <CheckboxGroup />
                   <RadioGroup />
                   <Container className="buttonGroup">
-                     <Button className="back" id="button-back" onClick={onBack}>
+                     <Button className="back" id="button-back" type="button" onClick={onBack}>
                         Back
                      </Button>
-                     <Button className="primary" id="button-next">
-                        Далее
+                     <Button className="primary" id="button-next" type="submit">
+                        Next
                      </Button>
                   </Container>
                </form>
@@ -124,13 +116,33 @@ export function Form() {
       case 3:
          return (
             <FormProvider {...methodsThirdStep}>
-               <form className={styles.form} onSubmit={methodsThirdStep.handleSubmit(onSubmitThird)}>
+               <form className={styles.form} onSubmit={methodsThirdStep.handleSubmit(onSubmit)}>
                   <TextAreaAbout>About</TextAreaAbout>
                   <Container className="buttonGroup">
-                     <Button className="back" onClick={onBack}>
-                        Назад
+                     <Button className="back" type="button" onClick={onBack}>
+                        Back
                      </Button>
-                     <Button className="primary">Отправить</Button>
+                     <Button className="primary" type="submit">
+                        Send
+                     </Button>
+                     <>
+                        {isModalActive && (
+                           <Modal
+                              title="The form has been submitted"
+                              loading={loading}
+                              error={error}
+                              onClose={handleModalClose}>
+                              <div className={error ? `${styles.circle} ${styles.error}` : styles.circle}>
+                                 {error ? <CancelSvg /> : <SuccessSvg />}
+                              </div>
+                              {error ? null : (
+                                 <Button id="button-to-main" className="primary" onClick={onBack}>
+                                    Home
+                                 </Button>
+                              )}
+                           </Modal>
+                        )}
+                     </>
                   </Container>
                </form>
             </FormProvider>

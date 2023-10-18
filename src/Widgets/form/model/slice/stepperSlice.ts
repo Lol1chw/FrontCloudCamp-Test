@@ -5,7 +5,7 @@ export interface StepperState {
 }
 
 const initialState: StepperState = {
-   active: 2
+   active: 0
 }
 
 export const stepperSlice = createSlice({

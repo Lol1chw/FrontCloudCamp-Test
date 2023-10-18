@@ -1,7 +1,7 @@
 import * as yup from 'yup'
 
 export enum Sex {
-   none = 'Не выбрано',
+   none = 'None',
    man = 'man',
    woman = 'woman'
 }
@@ -83,3 +83,4 @@ export type Step2Values = yup.InferType<typeof Step2Schema>
 export type Step3Values = yup.InferType<typeof Step3Schema>
 
 export type FormStateValues = Step1Values & Step2Values & Step3Values
+export type FormData = Step1Values | Step2Values | Step3Values

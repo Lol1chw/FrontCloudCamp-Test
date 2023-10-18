@@ -3,9 +3,10 @@ import { InputMaster } from 'Entities/inputMaster'
 import { FormEvent, useState } from 'react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { homeSchema, HomeFormValues } from 'Shared/lib/index'
 import { Button } from 'Shared/ui'
 import { ValidationError } from 'yup'
-import { HomeFormValues, homeSchema, options, PLACEHOLDER, removePlaceholder } from '../model'
+import { options, PLACEHOLDER, removePlaceholder } from '../model/mask'
 
 export function FormHome() {
    const [errors, setErrors] = useState({
@@ -87,10 +88,10 @@ export function FormHome() {
 
    return (
       <form onSubmit={onSubmit}>
-         <InputMaster {...phoneProps}>Номер телефона</InputMaster>
+         <InputMaster {...phoneProps}>Phone number</InputMaster>
          <InputMaster {...emailProps}>Email</InputMaster>
          <Button className="primary" id="button-start" type="submit">
-            Начать
+            Start
          </Button>
       </form>
    )

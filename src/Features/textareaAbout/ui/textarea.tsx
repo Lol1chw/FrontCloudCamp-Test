@@ -17,7 +17,7 @@ export function TextAreaAbout({ children }: { children: ReactNode }) {
          {children}
          <TextArea
             className={errors.About ? 'textarea invalid' : 'textarea'}
-            placeholder="Placeholder"
+            placeholder="Enter about yourself"
             id="field-about"
             {...register('About')}
          />

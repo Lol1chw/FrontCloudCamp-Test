@@ -2,3 +2,17 @@
    display: flex;
    flex-direction: column;
 }
+
+.circle {
+   padding: 16px;
+   border-radius: 100px;
+   background: var(--preset-functional-status-alpha-emerald-green-15, rgba(5, 174, 113, 0.15));
+   width: 80px;
+   height: 80px;
+   box-sizing: border-box;
+   margin-bottom: 24px;
+}
+
+.circle.error {
+   background: var(--preset-functional-status-alpha-berry-red-15, rgba(232, 78, 88, 0.15));
+}

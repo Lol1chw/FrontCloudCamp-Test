@@ -2,9 +2,9 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import type { FormStateValues } from 'Shared/lib/index'
 import { Sex } from 'Shared/lib/index'
 
-type PushDataT = {
+type PushDataT<K extends keyof FormStateValues> = {
    fieldName: string
-   value: string
+   value: FormStateValues[K]
 }
 
 const initialState: FormStateValues = {
@@ -22,12 +22,16 @@ export const formSlice = createSlice({
    name: 'form',
    initialState,
    reducers: {
-      pushData: (state, action: PayloadAction<PushDataT>) => {
+      pushData: <K extends keyof FormStateValues>(
+         state: FormStateValues,
+         action: PayloadAction<PushDataT<K>>
+      ) => {
          const { fieldName, value } = action.payload
          return { ...state, [fieldName]: value }
-      }
+      },
+      reset: () => initialState
    }
 })
 
-export const { pushData } = formSlice.actions
+export const { pushData, reset } = formSlice.actions
 export const formReducer = formSlice.reducer
