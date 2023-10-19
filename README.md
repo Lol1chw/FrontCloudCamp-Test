@@ -1,27 +1,39 @@
-# React + TypeScript + Vite
+# Test assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Условия тестового задания [frontCloudCamp](https://github.com/FrontCloudCamp/test-assignment)
 
-Currently, two official plugins are available:
+[Макет](https://www.figma.com/file/rzIp6awR6dGFVrcxcCEwzD/Untitled?type=design&node-id=0-1&t=90NCIZwzg7SIsdMb-0) который использовался для разработки приложения.
 
--  [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--  [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Tech stack
 
-## Expanding the ESLint configuration
+-  Typescript
+-  CSS modules
+-  React
+-  Redux Toolkit
+-  Vite
+-  Eslint, prettier
+-  React hook form
+-  Yup
+-  Maskito
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
--  Configure the top-level `parserOptions` property like this:
+Use your package manager npm/pnpm/yarn etc
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+1. git clone https://github.com/Lol1chw/FrontCloudCamp-Test.git
+2. pnpm install
+3. pnpm build
 ```
 
--  Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--  Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--  Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+Locally:
+
+```
+pnpm preview
+```
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
