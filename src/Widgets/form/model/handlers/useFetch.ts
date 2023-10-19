@@ -7,7 +7,7 @@ type UseFetchProps = {
 }
 
 export function useFetch({ updatedState, setLoading, setError }: UseFetchProps) {
-   const response = fetch('http://1295417-ch24274.tw1.ru/forms', {
+   const response = fetch('https://1295417-ch24274.tw1.ru/forms', {
       headers: {
          'Content-Type': 'application/json'
       },
