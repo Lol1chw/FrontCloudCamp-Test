@@ -1,0 +1,28 @@
+.layout {
+   display: flex;
+   flex-direction: column;
+   height: 100svh;
+   text-align: center;
+}
+
+.footer {
+   padding-top: 3em;
+   height: 100%;
+   display: flex;
+   align-items: flex-end;
+   justify-content: center;
+}
+
+.link {
+   color: #9199a1;
+   font-size: 11px;
+}
+
+.monster {
+   max-width: 500px;
+   height: auto;
+}
+
+.container {
+   padding: 15px;
+}

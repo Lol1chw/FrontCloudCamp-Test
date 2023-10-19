@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux'
+import { useDocumentTitle } from 'Shared/lib'
 import { Container, Stepper } from 'Shared/ui'
 import { Form } from 'Widgets/index'
 export function Create() {
    const active = useSelector((state: AppState) => state.stepper.active)
+   useDocumentTitle('FrontCloudTest/Create')
 
    return (
       <Container className="create">
