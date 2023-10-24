@@ -21,7 +21,7 @@ export function AdvantagesList() {
       <>
          <label className={styles.label}>Advantages</label>
          <ul className={styles.list}>
-            {fields.length === 0 && <p className={styles.error}>Минимум одно поле должно быть заполнено</p>}
+            {fields.length === 0 && <p className={styles.error}>At least one field must be filled in</p>}
             {fields.map((field, index) => {
                if (errors?.Advantages?.[index]?.advantage?.message) {
                   errorMessage = errors?.Advantages?.[index]?.advantage?.message
